@@ -1,7 +1,7 @@
 //
 // Created by Antoine Hanna on 6/7/2025
 //
-#include "Window/Window.h"
+#include "LittleEngine/Window/Window.h"
 
 namespace LittleEngine::Window {
     Window::Window(HINSTANCE hinstance, int width, int height, const std::wstring &title)
