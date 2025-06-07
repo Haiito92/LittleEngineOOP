@@ -25,4 +25,5 @@ target_link_libraries(LittleEngine PRIVATE
     d3d12
     dxgi
     dxguid
+    kernel32
 )
