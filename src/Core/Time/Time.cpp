@@ -36,4 +36,10 @@ namespace LittleEngine::Core {
     float Time::GetFPS() const {
         return m_FPS;
     }
+
+    Time::Time()
+    : m_frequency{0}, m_startTimeInTicks{0}, m_elapsedTime(0.0f), m_deltaTime(0.0f), m_FPS(0.0f) {
+    }
+
+    Time::~Time() = default;
 }
