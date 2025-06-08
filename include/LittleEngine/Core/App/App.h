@@ -4,18 +4,13 @@
 
 #ifndef APP_H
 #define APP_H
+#include "LittleEngine/Core/Game/IGame.h"
 #include "LittleEngine/Core/Time/Time.h"
 
 namespace LittleEngine::Core {
 
     class App {
     public:
-        static App& GetInstance();
-
-        void Init();
-        void Run(HINSTANCE hInstance);
-        void Shutdown();
-    private:
         App();
         App(const App&) = delete;
         App(App&&) = delete;
@@ -23,6 +18,12 @@ namespace LittleEngine::Core {
 
         App& operator=(const App&) = delete;
         App& operator=(App&&) = delete;
+
+        void Init(IGame* game);
+        void Run(HINSTANCE hInstance);
+        void Shutdown();
+    private:
+        IGame* m_game;
     };
 
 }

@@ -10,13 +10,8 @@ namespace LittleEngine::Core {
 
     using Window::Window;
 
-    App & App::GetInstance() {
-        static App instance;
-        return instance;
-    }
-
-    void App::Init() {
-
+    void App::Init(IGame *game) {
+        m_game = game;
     }
 
     void App::Run(HINSTANCE hInstance) {
@@ -28,7 +23,7 @@ namespace LittleEngine::Core {
         while (appWindow.ProcessMessages()) {
             //App or Game loop
             time.Tick();
-
+            m_game->Update(time.GetDeltaTime());
         }
     }
 
