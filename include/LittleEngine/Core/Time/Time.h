@@ -15,9 +15,9 @@ namespace LittleEngine::Core {
         void Start();
         void Tick();
 
-        float GetDeltaTime();
-        float GetElapsedTime();
-        float GetFPS();
+        float GetDeltaTime() const;
+        float GetElapsedTime() const;
+        float GetFPS() const;
 
     private:
         Time();
@@ -29,6 +29,11 @@ namespace LittleEngine::Core {
         Time& operator=(Time&&) = delete;
 
         LARGE_INTEGER m_frequency;
+        LARGE_INTEGER m_startTimeInTicks;
+
+        float m_elapsedTime;
+        float m_deltaTime;
+        float m_FPS;
     };
 
 }
