@@ -23,12 +23,12 @@ namespace LittleEngine::Core {
         Time& time = Time::GetInstance();
         time.Start();
 
-        Log::LogInfo("Start App Loop");
+        Log::LogInfo("App", "Start App Loop");
         while (appWindow.ProcessMessages()) {
             //App or Game loop
             time.Tick();
             m_game->Update(time.GetDeltaTime());
-            Log::LogInfo("Delta Time: {}", time.GetDeltaTime());
+            Log::LogInfo("App", "Delta Time: {}", time.GetDeltaTime());
         }
     }
 
