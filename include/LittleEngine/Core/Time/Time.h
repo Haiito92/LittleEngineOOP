@@ -10,7 +10,7 @@ namespace LittleEngine::Core {
 
     class Time {
     public:
-        static Time& Get();
+        static Time& GetInstance();
 
         void Start();
         void Tick();

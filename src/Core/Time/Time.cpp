@@ -4,7 +4,7 @@
 #include "LittleEngine/Core/Time/Time.h"
 
 namespace LittleEngine::Core {
-    Time & Time::Get() {
+    Time & Time::GetInstance() {
         static Time instance;
         return instance;
     }
