@@ -12,6 +12,7 @@ namespace LittleEngine::Core {
 
     void App::Init(IGame *game) {
         m_game = game;
+        m_game->Init();
     }
 
     void App::Run(HINSTANCE hInstance) {
@@ -28,7 +29,7 @@ namespace LittleEngine::Core {
     }
 
     void App::Shutdown() {
-
+        m_game->Shutdown();
     }
 
     App::App() {

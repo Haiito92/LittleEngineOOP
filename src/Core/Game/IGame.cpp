@@ -5,6 +5,5 @@
 #include "LittleEngine/Core/Game/IGame.h"
 
 namespace LittleEngine::Core {
-    IGame::~IGame() {
-    }
+
 }

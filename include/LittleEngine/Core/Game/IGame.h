@@ -13,7 +13,7 @@ namespace LittleEngine::Core {
         virtual void Update(float deltaTime) = 0;
         virtual void Render();
         virtual void Shutdown();
-        virtual ~IGame();
+        virtual ~IGame() = default;
     };
 
 }
