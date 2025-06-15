@@ -23,6 +23,8 @@ namespace LittleEngine::Core {
         Time& time = Time::GetInstance();
         time.Start();
 
+        Log::LogInfo("App", "Start running.");
+
         while (appWindow.ProcessMessages()) {
             //App or Game loop
             time.Tick();
