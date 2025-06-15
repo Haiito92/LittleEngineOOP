@@ -3,6 +3,9 @@
 //
 #include "LittleEngine/Core/Time/Time.h"
 
+#include <iostream>
+#include <bits/ostream.tcc>
+
 namespace LittleEngine::Core {
     Time & Time::GetInstance() {
         static Time instance;
@@ -31,9 +34,13 @@ namespace LittleEngine::Core {
     }
 
     std::string Time::GetCurrentTimeFormattedString() const {
+        std::cout << "Current total seconds: " << m_currentTime << std::endl;
         int hours = m_currentTime / 60.0f / 60.0f;
+        std::cout << "Current hours: " << hours << std::endl;
         int minutes = (m_currentTime - (hours * 60.0f * 60.0f)) / 60.0f;
+        std::cout << "Current minutes: " << minutes << std::endl;
         int seconds = m_currentTime - (minutes * 60.0f);
+        std::cout << "Current seconds: " << seconds << std::endl;
 
         return std::to_string(hours) + ":" + std::to_string(minutes) + ":" + std::to_string(seconds);
     }

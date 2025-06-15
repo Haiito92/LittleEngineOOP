@@ -37,7 +37,7 @@ namespace LittleEngine::Core {
         template <typename... Args>
         static void LogMessage(const std::string& tag, std::format_string<Args...> fmt, Args&&... args) {
             const std::string message = std::format(fmt, std::forward<Args>(args)...);
-            std::cout << Time::GetInstance().GetCurrentTimeFormattedString() <<"[" << tag << "]" << ": " << message << std::endl;
+            std::cout << "[" + Time::GetInstance().GetCurrentTimeFormattedString() + "][" + tag + "]: " + message << std::endl;
         }
 
         static void SetColor(WORD color);
