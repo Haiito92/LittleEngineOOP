@@ -10,11 +10,7 @@ file(GLOB_RECURSE LITTLE_ENGINE_SRC CONFIGURE_DEPENDS
         include/*.h)
 
 # Build static library for the engine
-add_library(LittleEngine STATIC ${LITTLE_ENGINE_SRC}
-        src/Rendering/Renderer.cpp
-        include/LittleEngine/Rendering/Renderer.h
-        src/Rendering/Device.cpp
-        include/LittleEngine/Rendering/Device.h)
+add_library(LittleEngine STATIC ${LITTLE_ENGINE_SRC})
 
 # Include all engine subdirs
 target_include_directories(LittleEngine
