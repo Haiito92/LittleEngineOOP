@@ -4,6 +4,7 @@
 #ifndef TIME_H
 #define TIME_H
 #pragma once
+#include <string>
 #include <Windows.h>
 
 namespace LittleEngine::Core {
@@ -15,6 +16,7 @@ namespace LittleEngine::Core {
         void Start();
         void Tick();
 
+        std::string GetCurrentTimeFormattedString() const;
         float GetDeltaTime() const;
         float GetElapsedTime() const;
         float GetFPS() const;
@@ -31,6 +33,7 @@ namespace LittleEngine::Core {
         LARGE_INTEGER m_frequency;
         LARGE_INTEGER m_startTimeInTicks;
 
+        float m_currentTime;
         float m_elapsedTime;
         float m_deltaTime;
         float m_FPS;

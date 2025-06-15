@@ -12,17 +12,30 @@ namespace LittleEngine::Core {
     void Time::Start() {
         QueryPerformanceFrequency(&m_frequency);
         QueryPerformanceCounter(&m_startTimeInTicks);
+
+        m_currentTime = static_cast<float>(m_startTimeInTicks.QuadPart / m_frequency.QuadPart);
     }
 
     void Time::Tick() {
         LARGE_INTEGER currentTimeInTicks;
         QueryPerformanceCounter(&currentTimeInTicks);
+
+        m_currentTime = static_cast<float>(currentTimeInTicks.QuadPart / m_frequency.QuadPart);
+
         LONGLONG elapsedTimeInTicks = currentTimeInTicks.QuadPart - m_startTimeInTicks.QuadPart;
 
         float oldElapsedTime = m_elapsedTime;
         m_elapsedTime = static_cast<float>(elapsedTimeInTicks / m_frequency.QuadPart);
         m_deltaTime = m_elapsedTime - oldElapsedTime;
         m_FPS = 1.0f / m_deltaTime;
+    }
+
+    std::string Time::GetCurrentTimeFormattedString() const {
+        int hours = m_currentTime / 60.0f / 60.0f;
+        int minutes = (m_currentTime - (hours * 60.0f * 60.0f)) / 60.0f;
+        int seconds = m_currentTime - (minutes * 60.0f);
+
+        return std::to_string(hours) + ":" + std::to_string(minutes) + ":" + std::to_string(seconds);
     }
 
     float Time::GetDeltaTime() const{
