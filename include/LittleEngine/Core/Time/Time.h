@@ -33,7 +33,6 @@ namespace LittleEngine::Core {
         LARGE_INTEGER m_frequency;
         LARGE_INTEGER m_startTimeInTicks;
 
-        float m_currentTime;
         float m_elapsedTime;
         float m_deltaTime;
         float m_FPS;

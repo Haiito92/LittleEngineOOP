@@ -3,6 +3,7 @@
 //
 #include "LittleEngine/Core/Time/Time.h"
 
+#include <chrono>
 #include <iostream>
 #include <bits/ostream.tcc>
 
@@ -15,15 +16,11 @@ namespace LittleEngine::Core {
     void Time::Start() {
         QueryPerformanceFrequency(&m_frequency);
         QueryPerformanceCounter(&m_startTimeInTicks);
-
-        m_currentTime = static_cast<float>(m_startTimeInTicks.QuadPart / m_frequency.QuadPart);
     }
 
     void Time::Tick() {
         LARGE_INTEGER currentTimeInTicks;
         QueryPerformanceCounter(&currentTimeInTicks);
-
-        m_currentTime = static_cast<float>(currentTimeInTicks.QuadPart / m_frequency.QuadPart);
 
         LONGLONG elapsedTimeInTicks = currentTimeInTicks.QuadPart - m_startTimeInTicks.QuadPart;
 
@@ -34,15 +31,13 @@ namespace LittleEngine::Core {
     }
 
     std::string Time::GetCurrentTimeFormattedString() const {
-        std::cout << "Current total seconds: " << m_currentTime << std::endl;
-        int hours = m_currentTime / 60.0f / 60.0f;
-        std::cout << "Current hours: " << hours << std::endl;
-        int minutes = (m_currentTime - (hours * 60.0f * 60.0f)) / 60.0f;
-        std::cout << "Current minutes: " << minutes << std::endl;
-        int seconds = m_currentTime - (minutes * 60.0f);
-        std::cout << "Current seconds: " << seconds << std::endl;
+        auto now = std::chrono::system_clock::now();
+        std::time_t t = std::chrono::system_clock::to_time_t(now);
+        std::tm local_tm = *std::localtime(&t);
 
-        return std::to_string(hours) + ":" + std::to_string(minutes) + ":" + std::to_string(seconds);
+        std::ostringstream oss;
+        oss << std::put_time(&local_tm, "%H:%M:%S");
+        return oss.str();
     }
 
     float Time::GetDeltaTime() const{
