@@ -33,6 +33,8 @@ namespace LittleEngine::Core {
             SetColor(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
         }
 
+        static std::string HRESULTToString(HRESULT hr);
+
     private:
         template <typename... Args>
         static void LogMessage(const std::string& tag, std::format_string<Args...> fmt, Args&&... args) {
